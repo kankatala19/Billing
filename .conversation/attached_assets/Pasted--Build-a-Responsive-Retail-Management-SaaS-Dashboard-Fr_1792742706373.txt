@@ -1,0 +1,264 @@
+# Build a Responsive Retail Management SaaS Dashboard — Frontend Only
+
+Build a polished, production-style **Retail Management System frontend** for small and medium-sized Indian retail businesses, including textile shops, fabric stores, Maggam work businesses, bangle shops, tyre dealers, grocery stores and general retail shops.
+
+## 1. Technology and strict scope
+
+- Use React + TypeScript with `.tsx` files.
+- Use Vite, Tailwind CSS and shadcn/ui components where appropriate.
+- Use Lucide React icons.
+- Use Recharts for charts.
+- Use React Router for navigation if needed.
+- Build frontend only, with realistic local mock data.
+- Use local component state and localStorage for simple demo persistence.
+- Do not connect to Supabase, Firebase, a database, an external API or any backend.
+- Do not implement authentication services, actual payment processing, real GST filing, real WhatsApp API integration or server-side functionality.
+- Do not generate a mobile app or switch to another framework.
+- Do not add unnecessary packages, duplicate components, excessive animations or decorative landing pages.
+- Do not ask questions. Make sensible design decisions and build the complete application in one pass.
+
+## 2. Design system
+
+Create a premium, clean, modern B2B SaaS dashboard.
+
+Visual direction:
+- Light theme with a white content area and very light grey page background.
+- Primary accent: emerald green (#15803D or similar).
+- Use dark slate for text, subtle grey borders, restrained shadows and rounded corners.
+- Use a consistent spacing system and typography hierarchy.
+- Use Inter or a similar clean sans-serif font.
+- Use compact, readable data tables suitable for shop owners.
+- Use clear labels, helpful empty states, badges and confirmation dialogs.
+- Use green for positive indicators, amber for warnings and red for critical errors.
+- Avoid excessive gradients, glassmorphism, oversized headings, giant empty spaces and unnecessary decorative illustrations.
+- Ensure visual consistency across every page.
+- Prioritize readability, speed of navigation and ease of use for non-technical shop owners.
+
+## 3. Application layout
+
+Build an application shell with:
+
+**Desktop**
+- Fixed or sticky left sidebar, approximately 240px wide.
+- Main content area with a top header.
+- Header includes page title or breadcrumb, global search, notification icon and user profile menu.
+- Collapsible sidebar with icons and labels.
+- Consistent page headers with primary actions aligned to the right.
+
+**Mobile and tablet**
+- Responsive layout without horizontal page overflow.
+- Collapsible sidebar or mobile navigation drawer.
+- Tables adapt to smaller screens using responsive columns or horizontal scrolling within the table only.
+- KPI cards stack appropriately.
+- Forms and dialogs fit the screen.
+- Billing remains usable on tablet and mobile.
+
+## 4. Sidebar navigation
+
+Create these navigation items:
+
+1. Dashboard
+2. Billing / POS
+3. Products & Inventory
+4. Purchases & Suppliers
+5. Customers
+6. Expenses
+7. Staff & Salaries
+8. Reports & Analytics
+9. Settings
+
+Each item must navigate to its own functional frontend page. Highlight the active navigation item.
+
+## 5. Dashboard page
+
+Build a realistic dashboard with a date-range filter and these KPI cards:
+- Today's Sales
+- Total Purchases
+- Gross Profit
+- Total Expenses
+- Products in Stock
+- Low-Stock Items
+
+Add:
+- Sales trend line chart.
+- Sales by payment method chart.
+- Recent transactions table.
+- Low-stock products table.
+- Top-selling products list.
+- Recent activity section.
+- Clear links or buttons to create a bill, add a product and record a purchase.
+
+Use believable Indian retail sample data, formatted in INR (₹), with dates and quantities. Keep KPI values internally consistent with the mock transactions wherever practical.
+
+## 6. Billing / POS page
+
+Create a clean, fast point-of-sale interface:
+- Product search field.
+- Category filter chips.
+- Product selection grid or searchable product list.
+- Current cart with product name, quantity, unit price and line total.
+- Editable quantities and removable cart items.
+- Customer selector with an option to add a customer.
+- Line-item discount and overall discount.
+- Configurable GST selection, with inclusive/exclusive pricing mode.
+- Appropriate sample CGST/SGST or IGST calculation based on a simple demo setting.
+- Payment method selector: Cash, UPI, Card or Credit.
+- Subtotal, discount, tax and final total.
+- Buttons for Save Draft, Complete Sale, Print Preview and Share Invoice.
+
+Interactions:
+- Selecting a product adds it to the cart.
+- Quantity, discount and tax settings recalculate the total.
+- Complete Sale validates the cart, shows a confirmation dialog and adds a mock transaction to local state.
+- Print Preview opens a properly formatted invoice preview.
+- Include A4 and 80mm thermal preview layouts.
+- Share Invoice uses a demo-only share dialog with a simulated WhatsApp message and copyable invoice summary. Do not claim that a real WhatsApp message was sent.
+- Clearly label this as a frontend demonstration, not legally validated GST software.
+
+## 7. Products & Inventory page
+
+Include:
+- Product table with search, sorting, pagination and category filters.
+- Columns: product, SKU/barcode, category, unit, stock, purchase cost, selling price, tax rate and stock status.
+- Add Product and Edit Product dialogs.
+- Fields for product name, SKU, category, unit, purchase cost, selling price, applicable tax rate and minimum stock level.
+- Optional variant fields for size, colour, design or model.
+- Stock status badges: In Stock, Low Stock and Out of Stock.
+- Stock adjustment dialog with quantity, reason and notes.
+- Stock movement history panel.
+- Bulk Import and Export buttons. Export may generate a local CSV file; import can use a simple CSV upload and client-side parsing.
+- Add useful empty states and validation messages.
+
+Use configurable units such as pcs, sets, metres, kg, litres and pairs.
+
+## 8. Purchases & Suppliers page
+
+Create tabs for Purchases and Suppliers.
+
+Purchases:
+- Purchase history table with invoice number, supplier, date, item count, total and payment status.
+- Record Purchase dialog.
+- Supplier selector, products, quantities, unit costs, applicable tax and totals.
+- Payment status: Paid, Partial or Unpaid.
+- Purchase detail drawer or dialog.
+
+Suppliers:
+- Supplier table with name, phone, GSTIN, total purchases and outstanding balance.
+- Add/Edit Supplier dialog.
+- Supplier detail view with purchase history and payments.
+
+Demo behaviour: saving a purchase adds a mock purchase record and updates product stock in local state. No real accounting or external integrations.
+
+## 9. Customers page
+
+Include:
+- Searchable customer table.
+- Name, phone, GSTIN where applicable, total purchases and outstanding credit.
+- Add/Edit Customer dialog.
+- Customer detail view with purchase history and outstanding balance.
+- Record Payment dialog for demo credit payments.
+- Validation and helpful empty states.
+
+## 10. Expenses page
+
+Include:
+- Total expenses for the selected period.
+- Expense category breakdown chart.
+- Expense table with date, category, description, amount, payment method and recorded-by staff member.
+- Date and category filters.
+- Add/Edit Expense dialog.
+- Categories such as rent, electricity, transport, salaries, maintenance and miscellaneous.
+- Record expense actions should update local state and dashboard summaries.
+
+## 11. Staff & Salaries page
+
+Include:
+- Staff list with name, role, contact, monthly salary and status.
+- Add/Edit Staff dialog.
+- Salary payment history.
+- Salary amount, advances, deductions, paid amount and remaining payable.
+- Record Salary Payment dialog.
+- Month selector and salary summary cards.
+- Role badges for Owner, Manager, Cashier and Inventory Staff.
+
+This is basic staff and salary tracking only, not a full statutory payroll system.
+
+## 12. Reports & Analytics page
+
+Create a well-organized reporting page with tabs:
+- Sales
+- Purchases
+- Inventory
+- Expenses
+- Profit & Loss
+- Staff & Salaries
+
+Features:
+- From-date and to-date filters.
+- Quick date filters: Today, This Week, This Month and Custom Range.
+- Relevant KPI cards, tables and simple charts.
+- CSV export using the currently filtered dataset.
+- Clear empty states and report totals.
+
+Profit & Loss should distinguish:
+- Net sales.
+- Cost of goods sold.
+- Gross profit.
+- Operating expenses.
+- Estimated operating profit.
+
+Use transparent demo calculations. Do not present mock data as real accounting results.
+
+## 13. Settings page
+
+Include frontend settings for:
+- Business name, logo placeholder, address, phone and email.
+- GSTIN and registration status.
+- Default tax mode and supported demo tax rates.
+- Invoice prefix and numbering.
+- Invoice footer and payment instructions.
+- Default invoice layout: A4 or 80mm thermal.
+- Currency: INR.
+- User profile and demo role selection.
+- Data backup/export demonstration.
+- Theme preference, keeping light theme as default.
+
+Persist simple settings in localStorage.
+
+## 14. Shared interaction requirements
+
+- Every visible navigation item and primary button must work.
+- Add/Edit actions open forms or dialogs.
+- Forms validate required fields and show useful feedback.
+- Search and filters must affect displayed data.
+- Tables must use realistic data and meaningful statuses.
+- Charts must render properly and use consistent formatting.
+- Toast messages should confirm successful demo actions.
+- Use reusable components for KPI cards, data tables, dialogs, form fields, badges and page headers.
+- Keep all mock data in a small, centralized typed data module.
+- Use shared TypeScript types for products, customers, suppliers, invoices, purchases, expenses and staff.
+- Keep calculation utilities separate from UI components.
+- Use localStorage for persistence where appropriate.
+- Do not duplicate mock data separately on every page.
+- Use a consistent INR currency formatter and date formatter.
+- Include loading or empty states only where they improve the experience.
+
+## 15. Code quality and implementation boundaries
+
+- Use strict, sensible TypeScript typing. Avoid `any` unless absolutely necessary.
+- Build reusable components and a clear folder structure.
+- Avoid monolithic components and excessive abstraction.
+- Use semantic HTML, keyboard-accessible controls and accessible labels.
+- Ensure responsive behaviour at mobile, tablet and desktop widths.
+- Ensure all imports resolve and the application compiles.
+- Test core demo flows: add product, record purchase, create sale, update stock, add expense and export report.
+- Do not leave non-functional buttons or placeholder pages.
+- Do not build features beyond the scope listed above.
+- Do not create a marketing website, landing page, pricing page or backend.
+- Do not attempt actual authentication, live WhatsApp sending, real printer hardware integration, online payment collection or GST portal integration.
+
+## Final deliverable
+
+Build the complete frontend application, not just a dashboard mockup. All nine navigation sections must have polished, responsive pages, realistic sample data, consistent design and working demo interactions.
+
+Prioritize a cohesive and understandable user experience over adding more features. Generate the complete application in one focused pass and avoid unnecessary rewrites or speculative extras.
