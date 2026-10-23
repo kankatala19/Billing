@@ -3,6 +3,7 @@ import { Link, Route, Switch, useLocation } from 'wouter';
 import { Activity, ArrowDownRight, ArrowUpRight, BarChart3, Bell, Boxes, BriefcaseBusiness, CalendarDays, Check, ChevronDown, ChevronRight, CircleDollarSign, ClipboardList, CreditCard, Download, FileSpreadsheet, LayoutDashboard, Menu, PackagePlus, Plus, Search, Settings as SettingsIcon, ShoppingBag, ShoppingCart, Store, Trash2, TrendingUp, Users, Wallet, X } from 'lucide-react';
 import { Area, AreaChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { loadStore, saveStore, type Customer, type Expense, type Invoice, type LineItem, type Product, type Purchase, type SalaryPayment, type Settings, type Staff, type StoreData, type Supplier } from '@/lib/data';
+import Inventory from '@/pages/Inventory';
 
 const money = (n:number) => new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(Number(n)||0);
 const today = () => new Date().toISOString().slice(0,10);
@@ -11,6 +12,7 @@ const nav = [
  {label:'Overview',href:'/',icon:LayoutDashboard,group:'WORKSPACE'},
  {label:'Billing',href:'/billing',icon:ShoppingCart,group:'WORKSPACE'},
  {label:'Products',href:'/products',icon:Boxes,group:'WORKSPACE'},
+ {label:'Inventory',href:'/inventory',icon:PackagePlus,group:'WORKSPACE'},
  {label:'Purchases',href:'/purchases',icon:ClipboardList,group:'WORKSPACE'},
  {label:'Customers',href:'/customers',icon:Users,group:'RELATIONSHIPS'},
  {label:'Expenses',href:'/expenses',icon:Wallet,group:'RELATIONSHIPS'},
@@ -65,6 +67,7 @@ function App(){
      <Route path="/"><Dashboard data={store} /></Route>
      <Route path="/billing"><Billing data={store} update={update} openForm={openForm} flash={flash}/></Route>
      <Route path="/products"><Products data={store} update={update} openForm={openForm} flash={flash}/></Route>
+      <Route path="/inventory"><Inventory data={store} update={update} openForm={openForm} flash={flash}/></Route>
      <Route path="/purchases"><Purchases data={store} update={update} openForm={openForm} flash={flash}/></Route>
      <Route path="/customers"><Customers data={store} update={update} openForm={openForm} flash={flash}/></Route>
      <Route path="/expenses"><Expenses data={store} update={update} openForm={openForm} flash={flash}/></Route>
