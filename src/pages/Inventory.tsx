@@ -41,7 +41,7 @@ export default function Inventory({data,update,openForm,flash}:Props) {
   const [query,setQuery] = useState('');
   const [condition,setCondition] = useState('All conditions');
   const [category,setCategory] = useState('All categories');
-  const categories = useMemo(()=>['All categories',...Array.from(new Set(data.products.map(p=>p.category).filter(Boolean))).sort()], [data.products]);
+  const categories = useMemo<string[]>(()=>['All categories',...Array.from(new Set(data.products.map(p=>p.category).filter((c): c is string => Boolean(c)))).sort()], [data.products]);
   const filtered = useMemo(()=>data.products.filter(product=>{
     const matchedText = `${product.name} ${product.sku} ${product.category}`.toLowerCase().includes(query.trim().toLowerCase());
     const matchedCondition = condition==='All conditions' || conditionOf(product)===condition;

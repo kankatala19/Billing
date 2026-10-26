@@ -19,20 +19,24 @@ out-tsc/
 .env.production.local
 !.env.example
 
-# Unwanted Replit template & workspace artifacts
-artifacts/
-lib/
-scripts/
-.replit
-.replitignore
-replit.md
-.conversation/
-.replit-artifact/
+# Unwanted Replit template & workspace artifacts (anchored to root only)
+/artifacts/
+/lib/
+/scripts/
+/.replit
+/.replitignore
+/replit.md
+/.conversation/
+/.replit-artifact/
 *.toml
-pnpm-workspace.yaml
-pnpm-lock.yaml
-tsconfig.base.json
-.npmrc
+/pnpm-workspace.yaml
+/pnpm-lock.yaml
+/tsconfig.base.json
+/.npmrc
+
+# Explicitly ensure src/lib is never ignored
+!src/lib/
+!src/lib/**
 
 # Logs
 npm-debug.log*
